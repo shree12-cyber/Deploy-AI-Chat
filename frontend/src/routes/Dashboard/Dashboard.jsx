@@ -14,7 +14,7 @@ const Dashboard = () => {
     mutationFn: async (text) => {
       const token = await getToken(); // 🔐 Clerk token
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chats`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/chats`, {
         method: "POST",
         credentials: "include",
         headers: {

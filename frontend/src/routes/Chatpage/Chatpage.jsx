@@ -18,7 +18,7 @@ const Chatpage = () => {
       const token = await getToken(); // ✅ Await token here
 
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/chats/${chatid}`,
+        `${import.meta.env.VITE_API_URL}/chats/${chatid}`,
         {
           method: "GET",
           headers: {

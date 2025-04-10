@@ -49,7 +49,7 @@ const NewPrompt = ({ data }) => {
       const token = await getToken(); // 🔐 Clerk token
 
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/chats/${data._id}`,
+        `${import.meta.env.VITE_API_URL}/chats/${data._id}`,
         {
           method: "PUT",
           credentials: "include",

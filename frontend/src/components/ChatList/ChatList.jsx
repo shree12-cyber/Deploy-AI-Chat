@@ -13,7 +13,7 @@ const ChatList = () => {
     queryFn: async () => {
       const token = await getToken(); // ✅ Await token here
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/userchats`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/userchats`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`, // ✅ Clerk token

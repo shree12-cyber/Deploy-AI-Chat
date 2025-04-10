@@ -5,9 +5,13 @@ import mongoose from "mongoose";
 import UserChats from "./models/userChat.js";
 import Chats from "./models/chat.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import path from "path";
+import dotenv from 'dotenv'
 
 const port = process.env.PORT || 3000;
+const __dirname=path.resolve();
 
+dotenv.config();
 const app = express();
 app.use(
   cors({
@@ -162,6 +166,15 @@ app.use((err, req, res, next) => {
   console.log(err.stack);
   res.status(401).send("Unauthenticated!");
 });
+
+if(process.env.NODE_ENV==="production")
+{
+  app.use(express.static(path.join(__dirname,"../frontend/dist")));
+
+  app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"../frontend","dist","index.html"))
+  })
+}
 
 app.listen(port, () => {
   connect();
